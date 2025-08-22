@@ -72,7 +72,7 @@ top of the former phases so it is important that you do not fall behind.  If
 you do fall behind, there is a 5% late submission penalty per day.  The
 projects are written in the C programming language.  
 
-**Homeworks**: There are two written homeworks that prepare you for the two
+**Homeworks**: There are four written homeworks that prepare you for the two
 exams.
 
 **Participation**:  TopHat attendance will be taken every day.  Also, there
@@ -84,9 +84,9 @@ out-of-class discussions.
 
 * 4 Projects (40%): 10% each
 * Exams (40%):
-  * Midterm - 20%
-  * Final - 20%
-* 2 Homeworks (10%): 5% each
+  * Midterm - 15%
+  * Final - 15%
+* 4 Homeworks (20%): 5% each
 * Participation (10%)
 
 The following grading scale will be used.  Note that I generally do _not_ round
