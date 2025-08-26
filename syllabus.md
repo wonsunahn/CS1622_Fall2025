@@ -83,7 +83,7 @@ out-of-class discussions.
 ## Grading
 
 * 4 Projects (40%): 10% each
-* Exams (40%):
+* Exams (30%):
   * Midterm - 15%
   * Final - 15%
 * 4 Homeworks (20%): 5% each
