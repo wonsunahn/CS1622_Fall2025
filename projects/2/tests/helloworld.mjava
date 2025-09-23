@@ -1,0 +1,7 @@
+/* helloworld: A hello world program */
+program helloworld;
+class Test {
+    method void main() {
+        System.println('Hello World !!!');
+    }
+}
