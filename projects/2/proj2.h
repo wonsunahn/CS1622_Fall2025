@@ -86,6 +86,7 @@ void SetRightTreeOp(tree, int);
 void SetLeftChild(tree, tree);
 void SetRightChild(tree, tree);
 
-void printtree(tree nd, int depth);
+void printTreeText(tree nd, int depth);
+void printTreeGraphviz(tree nd, int parentNodeId);
 
 #endif /* #ifndef PROJ2_H_ */

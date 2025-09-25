@@ -1,0 +1,120 @@
+graph "" 
+   { 
+   fontname="Helvetica,Arial,sans-serif" 
+   node [fontname="Helvetica,Arial,sans-serif"] 
+   edge [fontname="Helvetica,Arial,sans-serif"] 
+   
+   subgraph cluster01 
+   { 
+   label="Syntax Tree" 
+   n00001 [label="ProgramOp"] ;
+   n00002 [label="ClassOp"] ;
+   n00001 -- n00002 ;
+   n00003 [label="DUMMYnode"] ;
+   n00002 -- n00003 ;
+   n00004 [label="ClassDefOp"] ;
+   n00002 -- n00004 ;
+   n00005 [label="BodyOp"] ;
+   n00004 -- n00005 ;
+   n00006 [label="BodyOp"] ;
+   n00005 -- n00006 ;
+   n00007 [label="DUMMYnode"] ;
+   n00006 -- n00007 ;
+   n00008 [label="MethodOp"] ;
+   n00006 -- n00008 ;
+   n00009 [label="HeadOp"] ;
+   n00008 -- n00009 ;
+   n00010 [label="IDNode,7,\"func\""] ;
+   n00009 -- n00010 ;
+   n00011 [label="SpecOp"] ;
+   n00009 -- n00011 ;
+   n00012 [label="DUMMYnode"] ;
+   n00011 -- n00012 ;
+   n00013 [label="TypeIdOp"] ;
+   n00011 -- n00013 ;
+   n00014 [label="INTEGERTNode"] ;
+   n00013 -- n00014 ;
+   n00015 [label="DUMMYnode"] ;
+   n00013 -- n00015 ;
+   n00016 [label="BodyOp"] ;
+   n00008 -- n00016 ;
+   n00017 [label="DUMMYnode"] ;
+   n00016 -- n00017 ;
+   n00018 [label="StmtOp"] ;
+   n00016 -- n00018 ;
+   n00019 [label="DUMMYnode"] ;
+   n00018 -- n00019 ;
+   n00020 [label="ReturnOp"] ;
+   n00018 -- n00020 ;
+   n00021 [label="NUMNode,55"] ;
+   n00020 -- n00021 ;
+   n00022 [label="DUMMYnode"] ;
+   n00020 -- n00022 ;
+   n00023 [label="MethodOp"] ;
+   n00005 -- n00023 ;
+   n00024 [label="HeadOp"] ;
+   n00023 -- n00024 ;
+   n00025 [label="IDNode,12,\"main\""] ;
+   n00024 -- n00025 ;
+   n00026 [label="SpecOp"] ;
+   n00024 -- n00026 ;
+   n00027 [label="DUMMYnode"] ;
+   n00026 -- n00027 ;
+   n00028 [label="DUMMYnode"] ;
+   n00026 -- n00028 ;
+   n00029 [label="BodyOp"] ;
+   n00023 -- n00029 ;
+   n00030 [label="DUMMYnode"] ;
+   n00029 -- n00030 ;
+   n00031 [label="StmtOp"] ;
+   n00029 -- n00031 ;
+   n00032 [label="DUMMYnode"] ;
+   n00031 -- n00032 ;
+   n00033 [label="RoutineCallOp"] ;
+   n00031 -- n00033 ;
+   n00034 [label="VarOp"] ;
+   n00033 -- n00034 ;
+   n00035 [label="IDNode,17,\"system\""] ;
+   n00034 -- n00035 ;
+   n00036 [label="SelectOp"] ;
+   n00034 -- n00036 ;
+   n00037 [label="FieldOp"] ;
+   n00036 -- n00037 ;
+   n00038 [label="IDNode,24,\"println\""] ;
+   n00037 -- n00038 ;
+   n00039 [label="DUMMYnode"] ;
+   n00037 -- n00039 ;
+   n00040 [label="DUMMYnode"] ;
+   n00036 -- n00040 ;
+   n00041 [label="CommaOp"] ;
+   n00033 -- n00041 ;
+   n00042 [label="AddOp"] ;
+   n00041 -- n00042 ;
+   n00043 [label="RoutineCallOp"] ;
+   n00042 -- n00043 ;
+   n00044 [label="VarOp"] ;
+   n00043 -- n00044 ;
+   n00045 [label="IDNode,7,\"func\""] ;
+   n00044 -- n00045 ;
+   n00046 [label="DUMMYnode"] ;
+   n00044 -- n00046 ;
+   n00047 [label="DUMMYnode"] ;
+   n00043 -- n00047 ;
+   n00048 [label="RoutineCallOp"] ;
+   n00042 -- n00048 ;
+   n00049 [label="VarOp"] ;
+   n00048 -- n00049 ;
+   n00050 [label="IDNode,7,\"func\""] ;
+   n00049 -- n00050 ;
+   n00051 [label="DUMMYnode"] ;
+   n00049 -- n00051 ;
+   n00052 [label="DUMMYnode"] ;
+   n00048 -- n00052 ;
+   n00053 [label="DUMMYnode"] ;
+   n00041 -- n00053 ;
+   n00054 [label="IDNode,4,\"c5\""] ;
+   n00004 -- n00054 ;
+   n00055 [label="IDNode,0,\"ex5\""] ;
+   n00001 -- n00055 ;
+   } 
+   } 

@@ -1,0 +1,24 @@
+graph "" 
+   { 
+   fontname="Helvetica,Arial,sans-serif" 
+   node [fontname="Helvetica,Arial,sans-serif"] 
+   edge [fontname="Helvetica,Arial,sans-serif"] 
+   
+   subgraph cluster01 
+   { 
+   label="Syntax Tree" 
+   n00001 [label="ProgramOp"] ;
+   n00002 [label="ClassOp"] ;
+   n00001 -- n00002 ;
+   n00003 [label="DUMMYnode"] ;
+   n00002 -- n00003 ;
+   n00004 [label="ClassDefOp"] ;
+   n00002 -- n00004 ;
+   n00005 [label="DUMMYnode"] ;
+   n00004 -- n00005 ;
+   n00006 [label="IDNode,8,\"c1\""] ;
+   n00004 -- n00006 ;
+   n00007 [label="IDNode,0,\"minimal\""] ;
+   n00001 -- n00007 ;
+   } 
+   } 
