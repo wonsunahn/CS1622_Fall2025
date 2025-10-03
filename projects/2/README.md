@@ -19,7 +19,7 @@
 
 DUE: October 30 (Thursday), 2025 Before Class
 
-Please accept Project 2 on **GitHub Classroom** using the following link: https://classroom.github.com/a/aK-KPdYL
+Please accept Project 2 on **GitHub Classroom** using the following link: TBD
 
 The GitHub Classroom repository works the same way as your Project 1 repository.
 
@@ -439,11 +439,11 @@ These functions are already fully implemented for your use.
 
 You can download the below grammar in [PDF format](proj2.appendixC.pdf), if you prefer.
 
-![Grammar Page 1](imgs/proj2.appendixB_Page_1.png "Grammar Page 1")
-![Grammar Page 2](imgs/proj2.appendixB_Page_2.png "Grammar Page 2")
-![Grammar Page 3](imgs/proj2.appendixB_Page_3.png "Grammar Page 3")
-![Grammar Page 4](imgs/proj2.appendixB_Page_4.png "Grammar Page 4")
-![Grammar Page 5](imgs/proj2.appendixB_Page_5.png "Grammar Page 5")
+![Grammar Page 1](imgs/proj2.appendixC_Page_1.png "Grammar Page 1")
+![Grammar Page 2](imgs/proj2.appendixC_Page_2.png "Grammar Page 2")
+![Grammar Page 3](imgs/proj2.appendixC_Page_3.png "Grammar Page 3")
+![Grammar Page 4](imgs/proj2.appendixC_Page_4.png "Grammar Page 4")
+![Grammar Page 5](imgs/proj2.appendixC_Page_5.png "Grammar Page 5")
 
 ### Appendix D: Debugging by comparing Abstract Syntax Trees
 
