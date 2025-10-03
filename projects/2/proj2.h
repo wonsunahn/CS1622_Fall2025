@@ -77,7 +77,6 @@ int NodeOp(tree T);
 int NodeKind(tree T);
 int IntVal(tree T);
 int IsNull(tree T);
-const char* getNodeOpString(tree nd);
 
 void SetNode(tree, tree);
 void SetNodeOp(tree, int);
@@ -85,8 +84,5 @@ void SetLeftTreeOp(tree, int);
 void SetRightTreeOp(tree, int);
 void SetLeftChild(tree, tree);
 void SetRightChild(tree, tree);
-
-void printTreeText(tree nd, int depth);
-void printTreeGraphviz(tree nd, int parentNodeId);
 
 #endif /* #ifndef PROJ2_H_ */

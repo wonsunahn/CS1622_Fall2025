@@ -25,15 +25,16 @@ extern FILE *treelst;
 extern FILE *treeimg;
 /* Root of the syntax tree */
 extern tree SyntaxTree;
-/* Make symbol table function */
-void MkST(tree);
+/* Print syntax tree in text format */
+void printTreeText(tree nd, int depth);
+/* Print syntax tree in graphviz format */
+void printTreeGraphviz(tree nd, std::string parentNodeId, std::string currentNodeId);
 
 void printUsage()
 {
   printf("USAGE: parser [OPTIONS] <source file path>\n");
   printf("Builds syntax tree and symbol table out of MINI-JAVA source code.\n\n");
   printf("  -h           this help screen.\n");
-  printf("  -p <file>    output graphviz file for syntax tree.\n");
 }
 
 int main(int argc, char **argv)
@@ -92,6 +93,7 @@ int main(int argc, char **argv)
   SyntaxTree = NULL;
   yyin = inputFile;
   yyparse();
+
   fclose(inputFile);
 
   if (SyntaxTree == NULL)
@@ -106,7 +108,7 @@ int main(int argc, char **argv)
 
   /* Print out syntax tree to graphviz file if requested. */
   if (treeimg != NULL)
-    printTreeGraphviz(SyntaxTree, 0); 
+    printTreeGraphviz(SyntaxTree, "", "n");
 
   return 0;
 }

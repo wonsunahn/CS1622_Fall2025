@@ -11,6 +11,7 @@ The functions in this file are contributed by Chunmin Qiao and
 Aggelos Varvitsiotis.
 */
 
+#include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -307,13 +308,13 @@ static void zerocrosses()
 		crosses[i] = 0;
 }
 
-extern "C" const char *getNodeOpString(tree nd)
+static const char *getNodeOpString(tree nd)
 {
 	assert(NodeKind(nd) == EXPRNode);
 	return opnodenames[NodeOp(nd) - ProgramOp];
 }
 
-extern "C" void printTreeText(tree nd, int depth)
+void printTreeText(tree nd, int depth)
 {
 	if (!depth)
 	{
@@ -398,12 +399,10 @@ static const char *frontMatter = "graph \"\" \n\
 static const char *backMatter = "   } \n\
    } \n";
 
-extern "C" void printTreeGraphviz(tree nd, int parentNodeId)
+void printTreeGraphviz(tree nd, std::string parentNodeId, std::string currentNodeId)
 {
-	static int nextNodeId = 1;
-	int currentNodeId = nextNodeId++;
 
-	if (parentNodeId == 0) {
+	if (parentNodeId == "") {
 		fprintf(treeimg, "%s", frontMatter);
 	}
 
@@ -414,56 +413,56 @@ extern "C" void printTreeGraphviz(tree nd, int parentNodeId)
 		int index = IntVal(nd);
 		if (index >= 0)
 		{
-			fprintf(treeimg, "   n%05d [label=\"IDNode,%d,\\\"%s\\\"\"] ;\n", currentNodeId, IntVal(nd),
+			fprintf(treeimg, "   %s [label=\"IDNode,%d,\\\"%s\\\"\"] ;\n", currentNodeId.c_str(), IntVal(nd),
 					getString(index));
 		}
 		else
-			fprintf(treeimg, "   n%05d [label=\"IDNode,%d,\\\"%s\\\"\"] ;\n", currentNodeId, index, "err");
+			fprintf(treeimg, "   %s [label=\"IDNode,%d,\\\"%s\\\"\"] ;\n", currentNodeId.c_str(), index, "err");
 	}
 	break;
 
 	case INTEGERTNode:
-		fprintf(treeimg, "   n%05d [label=\"INTEGERTNode\"] ;\n", currentNodeId);
+		fprintf(treeimg, "   %s [label=\"INTEGERTNode\"] ;\n", currentNodeId.c_str());
 		break;
 
 	case NUMNode:
-		fprintf(treeimg, "   n%05d [label=\"NUMNode,%d\"] ;\n", currentNodeId, IntVal(nd));
+		fprintf(treeimg, "   %s [label=\"NUMNode,%d\"] ;\n", currentNodeId.c_str(), IntVal(nd));
 		break;
 
 	case CHARNode:
 		if (isprint(IntVal(nd)))
-			fprintf(treeimg, "   n%05d [label=\"CHARNode,%d,\\'%c\\'\"] ;\n", currentNodeId, IntVal(nd), IntVal(nd));
+			fprintf(treeimg, "   %s [label=\"CHARNode,%d,\\'%c\\'\"] ;\n", currentNodeId.c_str(), IntVal(nd), IntVal(nd));
 		else
-			fprintf(treeimg, "   n%05d [label=\"CHARNode,%d,\\'%o\\'\"] ;\n",
-					currentNodeId, IntVal(nd), IntVal(nd));
+			fprintf(treeimg, "   %s [label=\"CHARNode,%d,\\'%o\\'\"] ;\n",
+					currentNodeId.c_str(), IntVal(nd), IntVal(nd));
 		break;
 
 	case STRINGNode:
-		fprintf(treeimg, "   n%05d [label=\"STRINGNode,%d,\\\"%s\\\"\"] ;\n", currentNodeId, IntVal(nd),
+		fprintf(treeimg, "   %s [label=\"STRINGNode,%d,\\\"%s\\\"\"] ;\n", currentNodeId.c_str(), IntVal(nd),
 				getString(IntVal(nd)));
 		break;
 
 	case EXPRNode:
-		fprintf(treeimg, "   n%05d [label=\"%s\"] ;\n", currentNodeId, getNodeOpString(nd));
+		fprintf(treeimg, "   %s [label=\"%s\"] ;\n", currentNodeId.c_str(), getNodeOpString(nd));
 		break;
 
 	default:
 		if (IsNull(nd))
-			fprintf(treeimg, "   n%05d [label=\"DUMMYnode\"] ;\n", currentNodeId);
+			fprintf(treeimg, "   %s [label=\"DUMMYnode\"] ;\n", currentNodeId.c_str());
 		else
-			fprintf(treeimg, "   n%05d [label=\"INVALID!!!\"] ;\n", currentNodeId);
+			fprintf(treeimg, "   %s [label=\"INVALID!!!\"] ;\n", currentNodeId.c_str());
 		break;
 	}
 
-	if (parentNodeId != 0) {
-		fprintf(treeimg, "   n%05d -- n%05d ;\n", parentNodeId, currentNodeId);
+	if (parentNodeId != "") {
+		fprintf(treeimg, "   %s -- %s ;\n", parentNodeId.c_str(), currentNodeId.c_str());
 	}
 	if (NodeKind(nd) == EXPRNode) {
-		printTreeGraphviz(LeftChild(nd), currentNodeId);
-		printTreeGraphviz(RightChild(nd), currentNodeId);
+		printTreeGraphviz(LeftChild(nd), currentNodeId, currentNodeId + "0");
+		printTreeGraphviz(RightChild(nd), currentNodeId, currentNodeId + "1");
 	}
 
-	if (parentNodeId == 0) {
+	if (parentNodeId == "") {
 		fprintf(treeimg, "%s", backMatter);
 	}
 }

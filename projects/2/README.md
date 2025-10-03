@@ -505,10 +505,10 @@ Here is the color legend:
 * blue : Nodes and edges only in the solution tree.
 * orange : Nodes in both trees but the label is different.
 
-As of now, the image diff algorithm is not very sophisticated so it may have
-trouble matching identical nodes when parts of the tree structure differ.  So
-it may show an identical node as two nodes (red and blue) when they are not
-correctly matched.  I will work on improving the algorithm and update you.
+The image comparison algorithm is not perfect so it may have trouble matching
+identical nodes when the tree structure differ significantly.  So it may show
+an identical node as deleted and added back in (one red and one blue) when the
+algorithm does not recognize them as identical.
 
 ### Appendix E: Debugging using VSCode Debugger
 
