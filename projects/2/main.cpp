@@ -35,6 +35,7 @@ void printUsage()
   printf("USAGE: parser [OPTIONS] <source file path>\n");
   printf("Builds syntax tree and symbol table out of MINI-JAVA source code.\n\n");
   printf("  -h           this help screen.\n");
+  printf("  -p <file>    output graphviz file for syntax tree.\n");
 }
 
 int main(int argc, char **argv)
