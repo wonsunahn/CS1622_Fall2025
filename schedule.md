@@ -51,6 +51,9 @@ CS1622 Compiler Design
       * Associativity / Precedence
       * Abstract Syntax Tree
 
+* ASSIGNMENTS RELEASED:
+  * Homework 2 (Thursday)
+
 ## WEEK 4 (Week of 15 SEP)
 
 * READINGS: Textbook, Chapters 4.3-4.5
@@ -81,7 +84,7 @@ CS1622 Compiler Design
   * Project 1 (Thursday)
 
 * ASSIGNMENTS RELEASED:
-  * Homework 2 (Thursday)
+  * Project 2 (Tuesday)
 
 ## WEEK 6 (Week of 29 SEP)
 
@@ -97,10 +100,6 @@ CS1622 Compiler Design
     * LR(0) items
     * Action and Goto Tables
 
-* ASSIGNMENTS RELEASED:
-  * Homework 3 (Thursday)
-  * Project 2 (Thursday)
-
 ## WEEK 7 (Week of 6 OCT)
 
 * TOPICS:
@@ -109,6 +108,9 @@ CS1622 Compiler Design
       * Closure function
       * Goto function
     * Building Action and Goto Tables from DFA
+
+* ASSIGNMENTS RELEASED:
+  * Homework 3 (Tuesday)
 
 * ASSIGNMENTS DUE:
   * Homework 2 (Thursday)
