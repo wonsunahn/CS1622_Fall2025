@@ -100,6 +100,9 @@ CS1622 Compiler Design
     * LR(0) items
     * Action and Goto Tables
 
+* ASSIGNMENTS RELEASED:
+  * Homework 3 (Thursday)
+
 ## WEEK 7 (Week of 6 OCT)
 
 * TOPICS:
@@ -108,9 +111,6 @@ CS1622 Compiler Design
       * Closure function
       * Goto function
     * Building Action and Goto Tables from DFA
-
-* ASSIGNMENTS RELEASED:
-  * Homework 3 (Tuesday)
 
 * ASSIGNMENTS DUE:
   * Homework 2 (Thursday)
