@@ -1,4 +1,4 @@
-# Syllabus - Fall 2024
+# Schedule - Fall 2025
 CS1622 Compiler Design
 
 ## WEEK 1 (Week of 25 AUG)
