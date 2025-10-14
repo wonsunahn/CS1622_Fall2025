@@ -145,7 +145,7 @@ CS1622 Compiler Design
   * Optionally, you can try the "Sample GradeScope Exam (For Practice)" to get used to the mechanics.
   * Exam is open book (Lecture slides, notes, textbook, homeworks and projects).  All materials must be on paper.
   * Please bring pen or pencil and some scratch pad paper so that you can draw state machines.
-  * No internet access.  No generative AI.
+  * No internet access.  No generative AI.  No JFLAP.
   * On your laptop screen, you should have only the GradeScope exam, or a Word document for fill in the table questions, at all times.
 
 * TOPICS:
