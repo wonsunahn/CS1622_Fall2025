@@ -19,7 +19,7 @@
 
 DUE: October 30 (Thursday), 2025 Before Class
 
-Please accept Project 2 on **GitHub Classroom** using the following link: TBD
+Please accept Project 2 on **GitHub Classroom** using the following link: https://classroom.github.com/a/aK-KPdYL
 
 The GitHub Classroom repository works the same way as your Project 1 repository.
 
