@@ -28,7 +28,8 @@ The exam may have these types of questions:
 * Be able to describe the relationship between the set of languages RL (Regular Languages), L(RE), L(NFA), and L(DFA).
 * Be able to recognize whether a string is a member of a language expressed using a regular expressions, an NFA, or a DFA.
 * Be able to recognize whether a state machine is an NFA or DFA.
-* Be able to describe the process that allows auto-generation of a lexer from a regular expression (RE -> NFA -> DFA -> minimization -> table-driven code).
+* Be able to describe the process that allows auto-generation of a lexer from a regular expression.  
+(RE -> NFA -> DFA -> minimization -> table-driven code)
 * Be able to convert a regular expression to an NFA using the McNaughton-Yamada-Thompson Algorithm.
 * Be able to convert an NFA to a DFA taking into consideration epsilon closures.
 * Be able to minimize a DFA and explain when state merging is allowed.
