@@ -28,7 +28,8 @@ The exam may have these types of questions:
 * Be able to describe the relationship between the set of languages RL (Regular Languages), L(RE), L(NFA), and L(DFA).
 * Be able to recognize whether a string is a member of a language expressed using a regular expressions, an NFA, or a DFA.
 * Be able to recognize whether a state machine is an NFA or DFA.
-* Be able to describe the process that allows auto-generation of a lexer from a regular expression (RE -> NFA -> DFA -> minimization -> table-driven code).* Be able to convert a regular expression to an NFA using the McNaughton-Yamada-Thompson Algorithm.
+* Be able to describe the process that allows auto-generation of a lexer from a regular expression (RE -> NFA -> DFA -> minimization -> table-driven code).
+* Be able to convert a regular expression to an NFA using the McNaughton-Yamada-Thompson Algorithm.
 * Be able to convert an NFA to a DFA taking into consideration epsilon closures.
 * Be able to minimize a DFA and explain when state merging is allowed.
 * Be able to convert an NFA or DFA to tabular format that can be access by table-driven code.
@@ -67,7 +68,7 @@ The exam may have these types of questions:
 * Be able to explain what each component of LR(k) means (the L, the R, and the k).
 * Be able to explain when terminal "shifting" and non-terminal "reduction" are performed in the LR parse process.
 * Be able to explain when a RHS found at the top of the LR parse stack is not a handle.
-* Be able to do a reverse of a rightmost derivation indicating the top of the LR parse stack using a #.
+* Be able to do a reverse of a rightmost derivation indicating the top of the LR parse stack using a #.  
 (id1#+id2\*id3 ⇒ E#+id2\*id3 ⇒ E+#id2\*id3 ⇒ E+id2#\*id3 ⇒ E+E#\*id3 ⇒ E+E\*#id3 ⇒ E+E\*id3# ⇒ E+E\*E# ⇒ E+E# ⇒ E)
 * Be able to discuss the pros/cons of LR in comparison with LL parsers.
 * Be able to write the LR(0) items in a given state of an SLR parser DFA, given a grammar.
