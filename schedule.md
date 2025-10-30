@@ -229,12 +229,12 @@ READINGS: Textbook, Chapters 1.6.6, 6.6-6.7, 7.4.2.-7.4.4, 8.4, 8.5.4
     * Control flow graph
     * Conservatism due to control flow
 
+* ASSIGNMENTS DUE:
+  * Project 3 (Tuesday)
+
 ## WEEK 14 (Week of 24 NOV)
 
 * NO CLASS (Thanksgiving Break)
-
-* ASSIGNMENTS DUE:
-  * Project 3 (Tuesday)
 
 ## WEEK 15 (Week of 1 DEC)
 
