@@ -172,6 +172,7 @@ CS1622 Compiler Design
 
 * ASSIGNMENTS RELEASED:
   * Project 3 (Thursday)
+  * Homework 4 Part 1 (Thursday)
 
 ## WEEK 11 (Week of 3 NOV)
 
@@ -208,6 +209,9 @@ CS1622 Compiler Design
       * Processing Declarations
       * Processing Statements
       * Processing Array references
+
+* ASSIGNMENTS DUE:
+  * Homework 4 Part 1 (Tuesday)
 
 ## WEEK 13 (Week of 17 NOV)
 
