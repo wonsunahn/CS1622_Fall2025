@@ -274,14 +274,16 @@ READINGS: Textbook, Chapters 9.2.1-9.2.3, 9.2.5, 9.3, 9.4
   * Midterm 2 review
   * Project 4 review
 
-* Final Exam Date (TBD): Midterm 2 on GradeScope
+* Midterm 2 on GradeScope
+  * Time and location: 12/12 (Friday) 12:00PM - 1:50PM @ IS 405
   * Steps:
     1. Do TopHat attendance at start of class.  If no attendance, grade will not be counted.
     2. Click on assignment "Midterm 2" on GradeScope (will appear at start of class).
     3. Click on the "Start Assignment" button.  There will be a count down timer on the top right once you start.
     4. Finish and submit the exam within 75 minutes.  You can submit multiple times.
-  * Exam is open book (Lecture slides, textbook, homeworks and projects are permitted).
-  * Exam is individual work (use of generative AI is banned).
+  * Exam is open book (Lecture slides, notes, textbook, homeworks and projects).  All materials must be on paper.
+  * No internet access.  No generative AI.  No JFLAP.
+  * On your laptop screen, you should have only the GradeScope exam, or a Word document for fill in the table questions, at all times.
 
 * ASSIGNMENTS DUE:
   * Homework 4 (Tuesday)
