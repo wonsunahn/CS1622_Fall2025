@@ -314,9 +314,11 @@ function call to very different instructions, so in the common LLVM IR, we want
 to maintain it at a high level, while still enabling optimizations.
 
 It is likely fastest to learn by example, but if you want a reference for LLVM IR, here it is:
+
 https://releases.llvm.org/12.0.0/docs/LangRef.html
 
 For example, if you want to understand what the getelementptr instruction does:
+
 https://releases.llvm.org/12.0.0/docs/LangRef.html#getelementptr-instruction
 
 Here is a rough explanation of what is important to understand.  Any string
