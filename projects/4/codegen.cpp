@@ -1,3 +1,8 @@
+/** Code by @author Wonsun Ahn, Fall 2025
+ * 
+ * The code generation implementation file.
+ */
+
 // stdlib headers
 #include <algorithm>
 #include <cctype>

@@ -1,5 +1,10 @@
 /* DO NOT GRADE */
 
+/** Code by @author Wonsun Ahn, Fall 2025
+ * 
+ * The semantic analysis implementation file.
+ */
+
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
