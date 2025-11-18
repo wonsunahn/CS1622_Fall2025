@@ -50,29 +50,17 @@ offered by the various machine code backends.
 
 ## Codespace Development Environment
 
-We will use the same exact development environment as Project 3.  Just like
-before, please install Flex/Bison:
-
-```
-sudo apt-get update
-sudo apt-get install -y flex
-```
-
-And the VSCode C++ Extensions Pack:
-
-https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack
-
-In addition to that, we need to set up the Clang/LLVM development environment
-as we are going to leverage Clang/LLVM to build our compiler.  First, let's
-start by installing the Clang/LLVM build tools:
-
-```
-sudo apt-get install -y clang-10 lldb-10 lld-10 clangd-10 clang-tidy-10 clang-format-10 clang-tools-10 llvm-10-dev llvm-10-tools libomp-10-dev libc++-10-dev libc++abi-10-dev libclang-common-10-dev libclang-10-dev libclang-cpp10-dev
-```
-
-Then, let's install the VSCode CodeLLDB extension to enable VSCode debugging using LLDB (which is the GDB counterpart for Clang/LLVM):
+We will use the same Clang/LLVM development environment we used for Project 3.
+Everything is pre-installed in the Docker image you are using for this project,
+except for the VSCode extensions.  Please install the VSCode CodeLLDB extension
+to enable VSCode debugging using LLDB (which is the GDB counterpart for
+Clang/LLVM):
 
 https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
+
+You will also need the VSCode C++ Extensions Pack as before:
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack
 
 Now we are all set!  You should be able to build the codegen binary by invoking
 the build target of the Makefile script on the terminal:
@@ -87,41 +75,41 @@ This results in the following output:
 $ make build
 flex lex.l
 yacc -d -v grammar.y
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c table.cpp -o table.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c codegen.cpp -o codegen.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c proj2.cpp -o proj2.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c proj3.cpp -o proj3.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c main.cpp -o main.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c semantic.cpp -o semantic.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags` -c llvm/LLVMGlobals.cpp -o llvm/LLVMGlobals.o
-clang-10 -g -I . `llvm-config-10 --cflags` -c y.tab.c -o y.tab.o
-clang++-10 -stdlib=libc++ -g -I . `llvm-config-10 --cxxflags --ldflags --system-libs --libs all` -o codegen ./table.o ./codegen.o ./proj2.o ./proj3.o ./main.o ./semantic.o ./llvm/LLVMGlobals.o y.tab.o -lfl
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c proj2.cpp -o proj2.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c proj3.cpp -o proj3.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c semantic.cpp -o semantic.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c llvm/LLVMGlobals.cpp -o llvm/LLVMGlobals.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c codegen.cpp -o codegen.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c main.cpp -o main.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags` -c table.cpp -o table.o
+clang-12 -g -I . `llvm-config-12 --cflags` -c y.tab.c -o y.tab.o
+clang++-12 -stdlib=libc++ -g -I . `llvm-config-12 --cxxflags --ldflags --system-libs --libs all` -o codegen ./proj2.o ./proj3.o ./semantic.o ./llvm/LLVMGlobals.o ./codegen.o ./main.o ./table.o y.tab.o -lfl
 ```
 
 Try also building the LLVM code examples.  We will talk about these later:
 
 ```
 $ make examples
-examples_outputs/structs.exe > examples_outputs/structs.codegen.ll
-clang -Wno-override-module -S -c examples_outputs/structs.codegen.ll -o examples_outputs/structs.codegen.s
-clang examples_outputs/structs.codegen.s -o examples_outputs/structs.codegen.exe
-examples_outputs/structs.codegen.exe > examples_outputs/structs.codegen.out
-examples_outputs/fib.exe > examples_outputs/fib.codegen.ll
-clang -Wno-override-module -S -c examples_outputs/fib.codegen.ll -o examples_outputs/fib.codegen.s
-clang examples_outputs/fib.codegen.s -o examples_outputs/fib.codegen.exe
-examples_outputs/fib.codegen.exe > examples_outputs/fib.codegen.out
 examples_outputs/array-1d.exe > examples_outputs/array-1d.codegen.ll
-clang -Wno-override-module -S -c examples_outputs/array-1d.codegen.ll -o examples_outputs/array-1d.codegen.s
-clang examples_outputs/array-1d.codegen.s -o examples_outputs/array-1d.codegen.exe
+clang-12 -Wno-override-module -S -c examples_outputs/array-1d.codegen.ll -o examples_outputs/array-1d.codegen.s
+clang-12 examples_outputs/array-1d.codegen.s -o examples_outputs/array-1d.codegen.exe
 examples_outputs/array-1d.codegen.exe > examples_outputs/array-1d.codegen.out
 examples_outputs/array-2d.exe > examples_outputs/array-2d.codegen.ll
-clang -Wno-override-module -S -c examples_outputs/array-2d.codegen.ll -o examples_outputs/array-2d.codegen.s
-clang examples_outputs/array-2d.codegen.s -o examples_outputs/array-2d.codegen.exe
+clang-12 -Wno-override-module -S -c examples_outputs/array-2d.codegen.ll -o examples_outputs/array-2d.codegen.s
+clang-12 examples_outputs/array-2d.codegen.s -o examples_outputs/array-2d.codegen.exe
 examples_outputs/array-2d.codegen.exe > examples_outputs/array-2d.codegen.out
+examples_outputs/fib.exe > examples_outputs/fib.codegen.ll
+clang-12 -Wno-override-module -S -c examples_outputs/fib.codegen.ll -o examples_outputs/fib.codegen.s
+clang-12 examples_outputs/fib.codegen.s -o examples_outputs/fib.codegen.exe
+examples_outputs/fib.codegen.exe > examples_outputs/fib.codegen.out
 examples_outputs/helloworld.exe > examples_outputs/helloworld.codegen.ll
-clang -Wno-override-module -S -c examples_outputs/helloworld.codegen.ll -o examples_outputs/helloworld.codegen.s
-clang examples_outputs/helloworld.codegen.s -o examples_outputs/helloworld.codegen.exe
+clang-12 -Wno-override-module -S -c examples_outputs/helloworld.codegen.ll -o examples_outputs/helloworld.codegen.s
+clang-12 examples_outputs/helloworld.codegen.s -o examples_outputs/helloworld.codegen.exe
 examples_outputs/helloworld.codegen.exe > examples_outputs/helloworld.codegen.out
+examples_outputs/structs.exe > examples_outputs/structs.codegen.ll
+clang-12 -Wno-override-module -S -c examples_outputs/structs.codegen.ll -o examples_outputs/structs.codegen.s
+clang-12 examples_outputs/structs.codegen.s -o examples_outputs/structs.codegen.exe
+examples_outputs/structs.codegen.exe > examples_outputs/structs.codegen.ou
 ```
 
 ## Directory Structure and Makefile Script
@@ -137,12 +125,13 @@ Here is an overview of the directory structure in alphabetical order.  The files
 * **proj3.cpp** / proj3.h : Helper functions for building and querying the symbol table, (mostly) pre-implemented for you.  **Update**
 * **semantic.cpp** : Implements the semantic analysis stage of the compiler.  **Update**.
 * **table.cpp** : Implements the string table.  **Update**.
-* diffs/ : Directory where comparisons between outputs/ and outputs_solution/ are stored, generated by the <tt>diff</tt> command.
 * examples/ : Directory where LLVM code examples are stored.
 * examples_outputs/ : Directory where the code generated from the LLVM examples are stored.  As well as the execution outputs of the generated codes.
+* output_diffs/ : Directory where comparisons between outputs/ and outputs_solution/ are stored, generated by the <tt>diff</tt> command.
 * outputs/ : Directory where outputs after running your parser on source files under tests/ are stored.
 * outputs_solution/ : Directory where solution outputs after running the reference parser on source files under tests/ are stored.
-* tests/ : Source files for testing and grading your parser.
+* asts/, asts_solution/, ast_diffs/ : Abstract syntax tree images and their diffs that you already saw for Project 2.
+* tests/ : MINI-JAVA source files for testing and grading your parser.
 
 The files that are marked **Update** need only updating from the corresponding
 file in Project 3.  You can simply overwrite the file with your implementation.
@@ -154,30 +143,58 @@ As mentioned above, in order to build the codegen binary, you only need to invok
 make build
 ```
 
-To build and run the LLVM examples under the examples/ folder, invoke the examples make target:
+To build and run the LLVM examples under the examples/ folder, invoke the 'examples' target:
 
 ```
 make examples
 ```
 
-To build and run everything, including the test source files under tests/ and diffing the generated files under outputs/ with outputs_solution/, invoke the default make target:
+To generate code for the source files under tests/ and run the generated executables to populate the *.out files under outputs/ and diff them against outputs_solution/, invoke the 'test' target:
+
+```
+make test
+```
+
+To generate ASTs for the source files under tests/ into the asts/ folder and diff them against asts_solution/, invoke the 'asts' target:
+
+```
+make asts
+```
+
+To build and run everything, invoke the default make target:
 
 ```
 make
 ```
 
-The make script generates outputs and diffs in exactly the same way as in
-Projects 1~3.  This time, the outputs that are being diffed are the outputs of
-the compiled MINI-JAVA source codes after they have executed.  We are not going
-to diff the generated LLVM IR code itself, because two compilers can generate
-different codes but both can still be correct.
+The make script generates the diffs under output_diffs/ in exactly the same way
+as in Projects 1~3.  This time, the outputs that are being diffed are the
+outputs of the compiled MINI-JAVA source codes after they have executed.  We
+are not going to diff the generated LLVM IR code itself, because two compilers
+can generate different codes but both still be correct.  You will be graded
+against how many non-empty diffs you have under the output_diffs/ folder.
 
-If you wish to remove all files generated from the make script and
-start from scratch, invoke the 'clean' target:
+If you wish to remove the codegen binary and all intermediate object files, as
+well as all the generated outputs and start from scratch, invoke the 'clean'
+target:
 
 ```
 make clean
 ```
+
+If you wish to remove all files under examples_outputs/ and also the ASTs
+generated under asts/ as well as the ast_diffs/, in addition to removing all
+the files in the 'clean' target, invoke the 'distclean' target:
+
+```
+make distclean
+```
+
+In practice, you will rarely need to do 'make distclean' since the files under
+examples_outputs/, asts/, and ast_diffs/ are not contingent on any changes to
+the code generation stage of your compiler.  You will rarely have to do 'make
+clean' for that matter since the Makefile will automatically detect all
+dependencies and regenerate all relevant files after a change.
 
 ## Implementation
 
@@ -188,7 +205,7 @@ As mentioned, all your implementation efforts will be focused upon codegen.cpp.
 After updating the above mentioned grammar.y, lex.l, proj3.cpp, semantic.cpp,
 and table.cpp from Project 3, if you do 'make', you will still get lots of
 failures because you have not yet generated any code.  However, the
-outputs/\*.log files should now contain the symbol tables and parse trees which
+outputs/\*.log files should now contain the symbol tables and ASTs which
 are the results of semantic analysis.
 
 For example, outputs/helloworld.log should contain:
@@ -297,10 +314,10 @@ function call to very different instructions, so in the common LLVM IR, we want
 to maintain it at a high level, while still enabling optimizations.
 
 It is likely fastest to learn by example, but if you want a reference for LLVM IR, here it is:
-https://releases.llvm.org/11.0.0/docs/LangRef.html
+https://releases.llvm.org/12.0.0/docs/LangRef.html
 
 For example, if you want to understand what the getelementptr instruction does:
-https://releases.llvm.org/11.0.0/docs/LangRef.html#getelementptr-instruction
+https://releases.llvm.org/12.0.0/docs/LangRef.html#getelementptr-instruction
 
 Here is a rough explanation of what is important to understand.  Any string
 prefixed by the @ character are identifiers in the program (e.g. @0, @printf,
@@ -338,22 +355,36 @@ statements, and while loops shoould all be there.
 ### Completing codegen.cpp
 
 You are given some skeleton code in the form of the 'void codegen()' function.
-The code simply iterates over the symbol table and calls emitSymbol(i) on each
-of those symbols.  Your job is to fill in the emitSymbol function to emit the
-code for the corresponding symbol.  Note that the syntax tree is not passed in
-anywhere.  That is because all the information needed to emit code for the
-symbol is already in the symbol table, if you did semantic analysis properly.
-In fact, there is no use for the syntax tree any more.  Please practice modular
-programming and add helper functions and variables as needed --- otherwise, the
-emitSymbol function is going to get too big and unwieldy.
+As of now, the skeleton code only does correct code generation for the
+tests/helloworld.mjava source code (note that outputs/helloworld.out is
+identical to outputs_solution/helloworld.out and output_diffs/helloworld.diff
+is empty).  Your job is to complete the implementation of the codegen()
+function so that it works for all MINI-JAVA source codes.  Note that some parts
+of the skeleton code is hard-coded to only correctly generate helloworld.mjava
+and part of your job would be to modify that code so that it works in a more
+generic way.  Please feel free to add more helper functions to implement
+codegen(), for modularity and readability.
 
-Whenever you emit code for a symbol (in effect, defining the symbol), register
+The codegen() function simply iterates over the symbol table and calls
+emitSymbol(i) on each of those symbols.  Your job is to fill in the emitSymbol
+function to emit the code for the corresponding symbol (you will have no need
+to change the codegen() function itself).  Note that the syntax tree is not
+passed into the codegen() function .  That is because all the information
+needed to emit code for the symbol is already in the symbol table, if you did
+semantic analysis properly.  In fact, there is no use for the syntax tree any
+more.  
+
+Whenever you define a symbol such as a class, function, or variable, register
 the LLVM object that represents that symbol in the symbol table, using the
 OBJECT_ATTR attribute.  This is going to prove useful when you later use the
 symbol (for example, reading/writing a variable or calling a function).  You
-can use the corresponding LLVM object to emit the code for its use.
+can use the corresponding LLVM object to emit the code for its use.  In the
+skeleton code, note how the return value of emitFunction is a function LLVM
+object which is subsequently registered on the symbol table using the SetAttr
+function.  Later, in the emitFunctionCall function, the LLVM object is used as
+a parameter to CreateCall API to generate the function call.
 
-For example, take a look at the outputs_solution/variables.log file:
+For another example, take a look at the outputs_solution/variables.log file:
 
 ```
 **************** SYMBOL TABLE ****************
