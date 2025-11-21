@@ -42,7 +42,7 @@ void generateMain()
   llvm::Value *str = TheBuilder.CreateGlobalStringPtr("Hello world !!!\n");
   std::vector<llvm::Value *> callParams;
   callParams.push_back(str);
-  llvm::CallInst *callInst = llvm::CallInst::Create(funcPrintf, callParams, "call", bb);
+  TheBuilder.CreateCall(funcPrintf, callParams, "");
 
   // Insert return 0;
   llvm::Value* retVal = llvm::ConstantInt::get(TheContext, llvm::APInt(32, 0));

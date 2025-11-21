@@ -10,6 +10,8 @@ OBJ += $(CSOURCES:%.c=%.o)
 TESTS = $(wildcard tests/*.mjava)
 OUTPUTS := $(foreach test,$(TESTS),outputs/$(test:tests/%.mjava=%).out)
 OUTPUT_DIFFS := $(foreach test,$(TESTS),output_diffs/$(test:tests/%.mjava=%).diff)
+LOGS := $(foreach test,$(TESTS),logs/$(test:tests/%.mjava=%).log)
+LOG_DIFFS := $(foreach test,$(TESTS),log_diffs/$(test:tests/%.mjava=%).diff)
 ASTS := $(foreach test,$(TESTS),asts/$(test:tests/%.mjava=%).png)
 AST_DIFFS := $(foreach test,$(TESTS),ast_diffs/$(test:tests/%.mjava=%).png)
 
@@ -28,7 +30,7 @@ YACC = yacc
 
 all: build test asts examples
 build: codegen
-test: $(OUTPUTS) $(OUTPUT_DIFFS)
+test: $(OUTPUTS) $(OUTPUT_DIFFS) $(LOGS) $(LOG_DIFFS)
 asts: $(ASTS) $(AST_DIFFS)
 examples: $(EXAMPLE_OUTPUTS)
 
@@ -68,10 +70,10 @@ examples_outputs/$(1:examples/%.cpp=%).codegen.out: examples_outputs/$(1:example
 endef
 $(foreach example,$(EXAMPLES),$(eval $(call example_rules,$(example))))
 
-define test_rules
+define output_rules
 outputs/$(1:tests/%.mjava=%).ll: $(1) codegen
-	@echo "./codegen -v -o $$@ $(1) > outputs/$(1:tests/%.mjava=%).log"
-	-@./codegen -v -o $$@ $(1) > outputs/$(1:tests/%.mjava=%).log
+	@echo "./codegen -v -o $$@ $(1) > /dev/null"
+	-@./codegen -v -o $$@ $(1) > /dev/null
 outputs/$(1:tests/%.mjava=%).s: outputs/$(1:tests/%.mjava=%).ll
 	@echo "${CC} -Wno-override-module -S -c $$< -o $$@"
 	-@${CC} -Wno-override-module -S -c $$< -o $$@
@@ -91,14 +93,28 @@ outputs/$(1:tests/%.mjava=%).out: outputs/$(1:tests/%.mjava=%).exe
 	-@$$< > $$@
 endif
 endef
-$(foreach test,$(TESTS),$(eval $(call test_rules,$(test))))
+$(foreach test,$(TESTS),$(eval $(call output_rules,$(test))))
 
-define diff_rules
+define output_diff_rules
 output_diffs/$(1:tests/%.mjava=%).diff: outputs/$(1:tests/%.mjava=%).out
-	@echo "diff -dy -W 170 $$< outputs_solution/$(1:tests/%.mjava=%).out > $$@"
+	@echo "diff -d $$< outputs_solution/$(1:tests/%.mjava=%).out > $$@"
 	-@diff -d $$< outputs_solution/$(1:tests/%.mjava=%).out > $$@
 endef
-$(foreach test,$(TESTS),$(eval $(call diff_rules,$(test))))
+$(foreach test,$(TESTS),$(eval $(call output_diff_rules,$(test))))
+
+define log_rules
+logs/$(1:tests/%.mjava=%).log: $(1) codegen
+	@echo "./codegen -v -o /dev/null $(1) > logs/$(1:tests/%.mjava=%).log || ./codegen -v $(1) > logs/$(1:tests/%.mjava=%).log"
+	-@./codegen -v -o /dev/null $(1) > logs/$(1:tests/%.mjava=%).log || ./codegen -v $(1) > logs/$(1:tests/%.mjava=%).log
+endef
+$(foreach test,$(TESTS),$(eval $(call log_rules,$(test))))
+
+define log_diff_rules
+log_diffs/$(1:tests/%.mjava=%).diff: logs/$(1:tests/%.mjava=%).log
+	@echo "diff -d $$< logs_solution/$(1:tests/%.mjava=%).log > $$@"
+	-@diff -d $$< logs_solution/$(1:tests/%.mjava=%).log > $$@
+endef
+$(foreach test,$(TESTS),$(eval $(call log_diff_rules,$(test))))
 
 define ast_rules
 asts/$(1:tests/%.mjava=%).png: codegen $(1)
@@ -119,7 +135,7 @@ endef
 $(foreach test,$(TESTS),$(eval $(call ast_diff_rules,$(test))))
 
 clean:
-	rm -f codegen lex.yy.c ${OBJ} outputs/* output_diffs/*
+	rm -f codegen lex.yy.c ${OBJ} outputs/* output_diffs/* logs/* log_diffs/*
 
 distclean: clean
 	rm -f asts/*.png ast_diffs/*.png asts/*.gv ast_diffs/*.gv examples_outputs/*
