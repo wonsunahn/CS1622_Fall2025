@@ -19,7 +19,7 @@
 
 DUE: December 15 (Monday), 2025 11:59 PM
 
-Please accept Project 4 on **GitHub Classroom** using the following link: https://classroom.github.com/a/w-nLVSXy
+Please accept Project 4 on **GitHub Classroom** using the following link: TBD
 
 **WARNING**: Project is still under construction.  GitHub Classroom link will
 go live when project is ready.  The purpose of the early release is so that you

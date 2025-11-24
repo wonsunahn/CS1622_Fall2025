@@ -19,12 +19,12 @@ declare i32 @printf(...)
 
 define i32 @main() {
 entry:
-  %x = alloca i32
-  %y = alloca i32
+  %x = alloca i32, align 4
+  %y = alloca i32, align 4
   %0 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @string.const, i32 0, i32 0))
   %1 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
   %2 = call i32 (...) @scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @scanf.format, i32 0, i32 0), i32* %x)
-  %3 = load i32, i32* %x
+  %3 = load i32, i32* %x, align 4
   %4 = icmp sgt i32 %3, 10
   br i1 %4, label %then, label %else
 
@@ -34,7 +34,7 @@ then:                                             ; preds = %entry
   ret i32 0
 
 else:                                             ; preds = %entry
-  %7 = load i32, i32* %x
+  %7 = load i32, i32* %x, align 4
   %8 = icmp sgt i32 %7, 5
   br i1 %8, label %then1, label %else2
 
@@ -49,29 +49,29 @@ else2:                                            ; preds = %else
   br label %ifcont
 
 ifcont:                                           ; preds = %else2, %then1
-  store i32 1, i32* %x
-  store i32 0, i32* %y
+  store i32 1, i32* %x, align 4
+  store i32 0, i32* %y, align 4
   br label %loopcond
 
 loopcond:                                         ; preds = %loopbody, %ifcont
-  %13 = load i32, i32* %x
+  %13 = load i32, i32* %x, align 4
   %14 = icmp sle i32 %13, 10
   br i1 %14, label %loopbody, label %loopend
 
 loopbody:                                         ; preds = %loopcond
-  %15 = load i32, i32* %y
-  %16 = load i32, i32* %x
+  %15 = load i32, i32* %y, align 4
+  %16 = load i32, i32* %x, align 4
   %17 = add i32 %15, %16
-  store i32 %17, i32* %y
-  %18 = load i32, i32* %x
+  store i32 %17, i32* %y, align 4
+  %18 = load i32, i32* %x, align 4
   %19 = add i32 %18, 1
-  store i32 %19, i32* %x
+  store i32 %19, i32* %x, align 4
   br label %loopcond
 
 loopend:                                          ; preds = %loopcond
   %20 = call i32 (...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @string.const.4, i32 0, i32 0))
   %21 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
-  %22 = load i32, i32* %y
+  %22 = load i32, i32* %y, align 4
   %23 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %22)
   ret i32 0
 }

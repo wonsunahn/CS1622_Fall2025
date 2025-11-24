@@ -10,33 +10,33 @@ declare i32 @printf(...)
 
 define i32 @product(%Parameters* %0, i32 %1, i32 %2, i32 %3) {
 entry:
-  %p = alloca i32
-  store i32 %1, i32* %p
-  %x = alloca i32
-  store i32 %2, i32* %x
-  %y = alloca i32
-  store i32 %3, i32* %y
-  %4 = load i32, i32* %x
-  %5 = load i32, i32* %y
+  %p = alloca i32, align 4
+  store i32 %1, i32* %p, align 4
+  %x = alloca i32, align 4
+  store i32 %2, i32* %x, align 4
+  %y = alloca i32, align 4
+  store i32 %3, i32* %y, align 4
+  %4 = load i32, i32* %x, align 4
+  %5 = load i32, i32* %y, align 4
   %6 = mul i32 %4, %5
-  store i32 %6, i32* %p
-  %7 = load i32, i32* %p
-  %8 = load i32, i32* %p
+  store i32 %6, i32* %p, align 4
+  %7 = load i32, i32* %p, align 4
+  %8 = load i32, i32* %p, align 4
   %9 = mul i32 %7, %8
   ret i32 %9
 }
 
 define i32 @main() {
 entry:
-  %p = alloca i32
-  %x = alloca i32
-  store i32 0, i32* %p
-  %0 = load i32, i32* %p
+  %p = alloca i32, align 4
+  %x = alloca i32, align 4
+  store i32 0, i32* %p, align 4
+  %0 = load i32, i32* %p, align 4
   %1 = call i32 @product(%Parameters* @Parameters.global, i32 %0, i32 3, i32 4)
-  store i32 %1, i32* %x
-  %2 = load i32, i32* %p
+  store i32 %1, i32* %x, align 4
+  %2 = load i32, i32* %p, align 4
   %3 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %2)
-  %4 = load i32, i32* %x
+  %4 = load i32, i32* %x, align 4
   %5 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %4)
   ret i32 0
 }

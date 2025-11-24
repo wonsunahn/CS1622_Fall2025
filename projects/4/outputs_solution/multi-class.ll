@@ -17,28 +17,28 @@ entry:
   %1 = call i32 (...) @printf(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @string.const, i32 0, i32 0))
   %2 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
   %3 = getelementptr inbounds %Rect, %Rect* %0, i32 0, i32 1
-  %4 = load i32, i32* %3
+  %4 = load i32, i32* %3, align 4
   %5 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %4)
   %6 = getelementptr inbounds %Rect, %Rect* %0, i32 0, i32 0
-  %7 = load i32, i32* %6
+  %7 = load i32, i32* %6, align 4
   %8 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %7)
   %9 = getelementptr inbounds %Rect, %Rect* %0, i32 0, i32 1
-  %10 = load i32, i32* %9
+  %10 = load i32, i32* %9, align 4
   %11 = getelementptr inbounds %Rect, %Rect* %0, i32 0, i32 0
-  %12 = load i32, i32* %11
+  %12 = load i32, i32* %11, align 4
   %13 = mul i32 %10, %12
   ret i32 %13
 }
 
 define i32 @main() {
 entry:
-  %area = alloca i32
-  %0 = load i32, i32* getelementptr inbounds (%Rect, %Rect* @Rect.global, i32 0, i32 1)
+  %area = alloca i32, align 4
+  %0 = load i32, i32* getelementptr inbounds (%Rect, %Rect* @Rect.global, i32 0, i32 1), align 4
   %1 = icmp sgt i32 %0, 0
   br i1 %1, label %then, label %else
 
 then:                                             ; preds = %entry
-  store i32 5, i32* getelementptr inbounds (%Rect, %Rect* @Rect.global, i32 0, i32 1)
+  store i32 5, i32* getelementptr inbounds (%Rect, %Rect* @Rect.global, i32 0, i32 1), align 4
   br label %ifcont
 
 else:                                             ; preds = %entry
@@ -46,10 +46,10 @@ else:                                             ; preds = %entry
 
 ifcont:                                           ; preds = %else, %then
   %2 = call i32 @getArea(%Rect* @Rect.global)
-  store i32 4, i32* getelementptr inbounds (%Rect, %Rect* @Rect.global, i32 0, i32 0)
+  store i32 4, i32* getelementptr inbounds (%Rect, %Rect* @Rect.global, i32 0, i32 0), align 4
   %3 = call i32 @getArea(%Rect* @Rect.global)
-  store i32 %3, i32* %area
-  %4 = load i32, i32* %area
+  store i32 %3, i32* %area, align 4
+  %4 = load i32, i32* %area, align 4
   %5 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %4)
   %6 = call i32 @getArea(%Rect* @Rect.global)
   %7 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %6)

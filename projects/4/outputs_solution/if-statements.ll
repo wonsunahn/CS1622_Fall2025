@@ -11,9 +11,9 @@ declare i32 @printf(...)
 
 define i32 @main() {
 entry:
-  %x = alloca i32
-  store i32 4, i32* %x
-  %0 = load i32, i32* %x
+  %x = alloca i32, align 4
+  store i32 4, i32* %x, align 4
+  %0 = load i32, i32* %x, align 4
   %1 = icmp sge i32 %0, 0
   br i1 %1, label %then, label %else
 

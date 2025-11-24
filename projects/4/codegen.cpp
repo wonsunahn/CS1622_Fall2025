@@ -49,7 +49,7 @@ static bool isPredefined(int i)
   return IsAttr(i, PREDE_ATTR) ? GetAttr(i, PREDE_ATTR) : false;
 }
 
-static llvm::Type *getLLVMType(tree typenode, tree initnode)
+static llvm::Type *getLLVMType(tree typenode, std::vector<int> *dimensions)
 {
   llvm::Type *type = nullptr;
   if (NodeKind(LeftChild(typenode)) == INTEGERTNode)

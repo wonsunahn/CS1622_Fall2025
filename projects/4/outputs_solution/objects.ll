@@ -20,23 +20,23 @@ entry:
   %1 = call i32 (...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @string.const, i32 0, i32 0))
   %2 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
   %3 = getelementptr inbounds %Point, %Point* %0, i32 0, i32 0
-  %4 = load i32, i32* %3
+  %4 = load i32, i32* %3, align 4
   %5 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %4)
   %6 = call i32 (...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @string.const.1, i32 0, i32 0))
   %7 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
   %8 = getelementptr inbounds %Point, %Point* %0, i32 0, i32 1
-  %9 = load i32, i32* %8
+  %9 = load i32, i32* %8, align 4
   %10 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %9)
   %11 = getelementptr inbounds %Point, %Point* %0, i32 0, i32 0
   %12 = getelementptr inbounds %Point, %Point* %0, i32 0, i32 0
-  %13 = load i32, i32* %12
+  %13 = load i32, i32* %12, align 4
   %14 = add i32 %13, 1
-  store i32 %14, i32* %11
+  store i32 %14, i32* %11, align 4
   %15 = getelementptr inbounds %Point, %Point* %0, i32 0, i32 1
   %16 = getelementptr inbounds %Point, %Point* %0, i32 0, i32 1
-  %17 = load i32, i32* %16
+  %17 = load i32, i32* %16, align 4
   %18 = add i32 %17, 2
-  store i32 %18, i32* %15
+  store i32 %18, i32* %15, align 4
   ret void
 }
 
@@ -44,16 +44,16 @@ define i32 @main() {
 entry:
   call void @f1(%Point* @Point.global)
   call void @f1(%Point* @Point.global)
-  store i32 5, i32* getelementptr inbounds (%Main, %Main* @Main.global, i32 0, i32 0, i32 0)
+  store i32 5, i32* getelementptr inbounds (%Main, %Main* @Main.global, i32 0, i32 0, i32 0), align 4
   call void @f1(%Point* getelementptr inbounds (%Main, %Main* @Main.global, i32 0, i32 0))
   call void @f1(%Point* getelementptr inbounds (%Main, %Main* @Main.global, i32 0, i32 0))
   %0 = call i32 (...) @printf(i8* getelementptr inbounds ([9 x i8], [9 x i8]* @string.const.2, i32 0, i32 0))
   %1 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
-  %2 = load i32, i32* getelementptr inbounds (%Point, %Point* @Point.global, i32 0, i32 0)
+  %2 = load i32, i32* getelementptr inbounds (%Point, %Point* @Point.global, i32 0, i32 0), align 4
   %3 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %2)
   %4 = call i32 (...) @printf(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @string.const.3, i32 0, i32 0))
   %5 = call i32 (...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @printf.newline, i32 0, i32 0))
-  %6 = load i32, i32* getelementptr inbounds (%Main, %Main* @Main.global, i32 0, i32 0, i32 0)
+  %6 = load i32, i32* getelementptr inbounds (%Main, %Main* @Main.global, i32 0, i32 0, i32 0), align 4
   %7 = call i32 (...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @printf.format, i32 0, i32 0), i32 %6)
   ret i32 0
 }
