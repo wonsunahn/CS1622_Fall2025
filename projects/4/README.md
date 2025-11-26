@@ -224,9 +224,9 @@ For example, logs/helloworld.log should contain:
 
   0 helloworld    program          1                                                                                
   1     system      class          2        yes                                                                     
-  2    println   function          3        yes                                                         1           
+  2    println   function          3        yes                                                         1     printf
   3 Helloworld      class          2                                                                                
-  4       main   function          3                   int        BodyOp                                0           
+  4       main   function          3                   int        BodyOp                                0       main
 ************* SYNTAX TREE PRINTOUT ***********
 
   +-[STNode,0,"helloworld"]
