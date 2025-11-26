@@ -21,12 +21,6 @@ DUE: December 15 (Monday), 2025 11:59 PM
 
 Please accept Project 4 on **GitHub Classroom** using the following link: https://classroom.github.com/a/w-nLVSXy
 
-**WARNING**: Project is still under construction.  GitHub Classroom link will
-go live when project is ready.  The purpose of the early release is so that you
-can learn the project parameters and start reading and learning about LLVM IR.
-The project parameters will stay the same --- I am just preparing more helper
-code for you.
-
 ## Description
 
 In this phase of the project, you will write a code generator for the CS 1622
