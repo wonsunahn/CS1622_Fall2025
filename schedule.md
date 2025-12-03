@@ -242,9 +242,6 @@ READINGS: Textbook, Chapters 1.6.6, 6.6-6.7, 7.4.2.-7.4.4, 8.4, 8.5.4
 ## WEEK 14 (Week of 24 NOV)
 
 * NO CLASS (Thanksgiving Break)
-
-* ASSIGNMENTS DUE:
-  * Homework 4 Part 2 (Tuesday)
     
 ## WEEK 15 (Week of 1 DEC)
 
@@ -270,9 +267,12 @@ READINGS: Textbook, Chapters 9.2.1-9.2.3, 9.2.5, 9.3, 9.4
       * Dead Code Elimination
       * Register Allocation
 
+* ASSIGNMENTS DUE:
+  * Homework 4 Part 2 (Tuesday)
+
 * ASSIGNMENTS RELEASED:
-  * Homework 4 (Tuesday)
- 
+  * Homework 4 Part 3 (Tuesday)
+
 ## WEEK 16 (Week of 8 DEC)
 
 * TOPICS:
