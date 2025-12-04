@@ -22,8 +22,8 @@ The exam may have these types of questions:
 * Be able to explain why in the C language, the type declaration "int A[][100]" is allowed for a function parameter A, but not for a local variable A.
 * Be able to tell the difference between static type checking and dynamic type checking.
 * Be able to compare the pros and cons of static type checking and dynamic type checking.
-* {\bf Be able to perform type inference on a piece of code given a set of type rules.}
-* {\bf Be able to point out when a type rule is unsound or unusable.}
+* **Be able to perform type inference on a piece of code given a set of type rules.**
+* **Be able to point out when a type rule is unsound or unusable.**
 * Be able to explain why static type checking can sometimes fail sound programs.
 * Be able to tell whether an attribute is synthesized or inherited.
 * Be able to discuss what needs to be true about attributes for an SDD to be implemented through a parse tree traversal.
@@ -40,24 +40,24 @@ The exam may have these types of questions:
 * Be able to recognize which IR is most appropriate for a given optimization.
 * Be able to explain what Static Single Assignment (SSA) IR is, and why it helps with compiler analyses and optimixations.
 * Be able to explain what a phi function is in SSA and why it is needed.
-* {\bf Be able to lay out local variables in memory taking scopes into consideration, given a code snippet.}
+* **Be able to lay out local variables in memory taking scopes into consideration, given a code snippet.**
 * Be able to explain how static memory and heap memory allocations are handled with respect to the compiler.
 * Be able to explain in what situations backpatching is required during code generation.
-* {\bf Be able to write semantic actions to generate code using backpatching for boolean expressions under short circuit semantics.}
-* {\bf Be able to write semantic actions to generate code using backpatching for if statements and while loops.}
+* **Be able to write semantic actions to generate code using backpatching for boolean expressions under short circuit semantics.**
+* **Be able to write semantic actions to generate code using backpatching for if statements and while loops.**
 
 ## COMPILER OPTIMIZATION
 * Be able to explain the following optimizations: strength reduction, dead code elimination, loop invariant code motion, and data prefetching.
-* {\bf Be able to identify whether an optimization is local/global and intra-procedural/inter-procedural, given a code snippet.}
-* {\bf Be able to identify leader instructions and basic blocks, given a code snippet.}
-* {\bf Be able to identify control flow edges, given a code snippet.}
+* **Be able to identify whether an optimization is local/global and intra-procedural/inter-procedural, given a code snippet.**
+* **Be able to identify leader instructions and basic blocks, given a code snippet.**
+* **Be able to identify control flow edges, given a code snippet.**
 * Be able to explain what it means for a compiler optimization to be conservative and why it is important.
-* {\bf Be able to compute the GCP dataflow value at a given point in the control flow graph, given a code snippet.}
-* {\bf Be able to point out which instructions can be optimized based on the GCP dataflow analysis.}
-* {\bf Be able to compute the Liveness dataflow value at a given point in the control flow graph, given a code snippet.}
-* {\bf Be able to point out which instructions can be eliminated based on the Liveness dataflow analysis.}
+* **Be able to compute the GCP dataflow value at a given point in the control flow graph, given a code snippet.**
+* **Be able to point out which instructions can be optimized based on the GCP dataflow analysis.**
+* **Be able to compute the Liveness dataflow value at a given point in the control flow graph, given a code snippet.**
+* **Be able to point out which instructions can be eliminated based on the Liveness dataflow analysis.**
 * Be able to tell the difference between the maximum fixedpoint solution and the meet-over-paths solution.
 * Be able to tell the difference between the meet-over-paths solution and the ideal solution.
 * Be able to explain why Liveness Analysis is a distributive framework, but GCP is not.
-* {\bf Be able to compute the Register Interference Graph (RIG) from a Liveness Analysis result.}
+* **Be able to compute the Register Interference Graph (RIG) from a Liveness Analysis result.**
 * Be able to explain how the RIG is used for register allocation.
