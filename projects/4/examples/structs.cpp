@@ -29,10 +29,9 @@ static void generatePrintf()
   assert (funcPrintf != nullptr);
 }
 
-static llvm::GlobalVariable* generatePointGlobal()
+static llvm::GlobalVariable* generatePointGlobal(llvm::StructType *pointType)
 {
   // Add pointGlobal global variable declaration of type struct Point.
-  llvm::StructType *pointType = llvm::StructType::create(TheContext, { llvm::Type::getInt32Ty(TheContext), llvm::Type::getInt32Ty(TheContext) }, "Point");
   TheModule->getOrInsertGlobal("pointGlobal", pointType);
   llvm::GlobalVariable *pointVar = TheModule->getNamedGlobal("pointGlobal");
 
@@ -44,10 +43,9 @@ static llvm::GlobalVariable* generatePointGlobal()
   return pointVar;
 }
 
-static llvm::AllocaInst* generatePointLocal()
+static llvm::AllocaInst* generatePointLocal(llvm::StructType *pointType)
 {
   // Add pointLocal local variable declaration of type struct Point.
-  llvm::StructType *pointType = llvm::StructType::create(TheContext, { llvm::Type::getInt32Ty(TheContext), llvm::Type::getInt32Ty(TheContext) }, "Point");
   llvm::AllocaInst *pointVar = TheBuilder.CreateAlloca(pointType, nullptr, "pointLocal");
   return pointVar;
 }
@@ -82,10 +80,12 @@ static void generateMain()
   llvm::BasicBlock *bb = llvm::BasicBlock::Create(TheContext, "entry", func);
   TheBuilder.SetInsertPoint(bb);
 
+  // Define struct Point type
+  llvm::StructType *pointType = llvm::StructType::create(TheContext, { llvm::Type::getInt32Ty(TheContext), llvm::Type::getInt32Ty(TheContext) }, "Point");
   // Instantiate pointGlobal struct
-  llvm::GlobalVariable *pointGlobalVar = generatePointGlobal();
+  llvm::GlobalVariable *pointGlobalVar = generatePointGlobal(pointType);
   // Instantiate pointLocal struct
-  llvm::AllocaInst *pointLocalVar = generatePointLocal();
+  llvm::AllocaInst *pointLocalVar = generatePointLocal(pointType);
 
   // Copy pointGlobal into pointLocal
   llvm::Value *pointGlobalXField = TheBuilder.CreateStructGEP(pointGlobalVar, 0, "pointGlobal.x");
