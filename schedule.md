@@ -287,7 +287,7 @@ READINGS: Textbook, Chapters 9.2.1-9.2.3, 9.2.5, 9.3, 9.4
   * On your laptop screen, you should have only the GradeScope exam at all times.
 
 * ASSIGNMENTS DUE:
-  * Homework 4 (Tuesday)
+  * Homework 4 Part 3 (Tuesday)
 
 ## WEEK 17 (Week of 15 DEC)
 
